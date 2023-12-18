@@ -9,7 +9,7 @@ using System;
 using UnityEngine.EventSystems;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	/// <summary>
 	/// Select和Deselect事件不会冒泡，因为UpdateSelected事件会在选中物体上每帧触发，所以分开监听
 	/// </summary>

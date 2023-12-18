@@ -7,11 +7,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	public class LuaBehaviour : MonoBehaviour {
 		protected enum State {
 			UNINITIALIZED,
@@ -63,7 +64,7 @@ namespace CSLike {
 			if (isActiveAndEnabled) {
 				m_LuaAwake?.Invoke(m_LuaTable);
 				m_State = State.AWOKE;
-				m_LuaOnEnable.Invoke(m_LuaTable);
+				m_LuaOnEnable?.Invoke(m_LuaTable);
 			}
 		}
 

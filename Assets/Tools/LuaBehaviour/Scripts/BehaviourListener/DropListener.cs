@@ -9,7 +9,7 @@ using System;
 using UnityEngine.EventSystems;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	/// <summary>
 	/// Drop事件不会冒泡
 	/// </summary>

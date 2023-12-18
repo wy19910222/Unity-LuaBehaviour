@@ -9,7 +9,7 @@ using System;
 using UnityEngine.EventSystems;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	/// <summary>
 	/// Submit和Cancel事件不会冒泡，它是Input里的确定和取消事件，不是文本框事件
 	/// </summary>

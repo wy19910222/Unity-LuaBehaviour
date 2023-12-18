@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	[CreateAssetMenu(menuName="LuaScriptableData", fileName="LuaData")]
 	public class LuaScriptableData : ScriptableObject {
 #if UNITY_EDITOR

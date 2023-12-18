@@ -9,7 +9,7 @@ using System;
 using UnityEngine.EventSystems;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	/// <summary>
 	/// Move事件会在选中物体上触发，它是Input里的横竖轴事件，不是坐标改变事件
 	/// </summary>

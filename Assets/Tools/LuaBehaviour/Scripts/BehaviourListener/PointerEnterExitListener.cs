@@ -9,7 +9,7 @@ using System;
 using UnityEngine.EventSystems;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	/// <summary>
 	/// Enter和Exit事件会冒泡，而Down、Up和Click事件不会，所以分开监听
 	/// </summary>

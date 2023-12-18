@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEditor;
-using CSLike;
+using LuaApp;
 using UObject = UnityEngine.Object;
 
 public class LuaInjectionDataDrawer {

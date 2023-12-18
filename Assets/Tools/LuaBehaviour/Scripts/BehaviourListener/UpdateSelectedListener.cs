@@ -9,7 +9,7 @@ using System;
 using UnityEngine.EventSystems;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	/// <summary>
 	/// UpdateSelected事件会在选中物体上每帧触发，所以分开监听
 	/// </summary>

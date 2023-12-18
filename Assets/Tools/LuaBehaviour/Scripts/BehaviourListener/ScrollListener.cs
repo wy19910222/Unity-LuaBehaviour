@@ -9,7 +9,7 @@ using System;
 using UnityEngine.EventSystems;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	/// <summary>
 	/// Scroll事件不会冒泡，它是鼠标滚轮事件，不是ScrollView的滚动事件
 	/// </summary>

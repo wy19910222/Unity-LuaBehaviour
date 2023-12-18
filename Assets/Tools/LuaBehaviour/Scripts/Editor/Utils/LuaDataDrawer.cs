@@ -15,7 +15,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEditor;
 using XLua;
-using CSLike;
+using LuaApp;
 
 using UObject = UnityEngine.Object;
 

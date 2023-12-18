@@ -9,46 +9,47 @@ using System.Reflection;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using CSLike;
 
 using UObject = UnityEngine.Object;
 
-// [CanEditMultipleObjects]
-[CustomEditor(typeof(LuaInjectionData), true)]
-public class LuaInjectionDataInspector : Editor {
-	private LuaInjectionDataDrawer m_InjectionDrawer;
+namespace LuaApp {
+	[CustomEditor(typeof(LuaInjectionData), true)]
+	public class LuaInjectionDataInspector : Editor {
+		private LuaInjectionDataDrawer m_InjectionDrawer;
 
-	private void OnEnable() {
-		m_InjectionDrawer = new LuaInjectionDataDrawer();
-	}
-	
-	public override void OnInspectorGUI() {
-		FieldInfo injectionListField = typeof(LuaInjectionData).GetField("m_InjectionList", BindingFlags.Instance | BindingFlags.NonPublic);
-		List<Injection7> injections = injectionListField?.GetValue(target) as List<Injection7>;
-		if (injections != null) {
-			m_InjectionDrawer.DrawDict(injections, target);
+		private void OnEnable() {
+			m_InjectionDrawer = new LuaInjectionDataDrawer();
 		}
-		
-		EditorGUILayout.BeginHorizontal();
-		EditorGUILayout.LabelField("Lua Class", GUILayout.Width(80F));
-		
-		FieldInfo classNameField = typeof(LuaInjectionData).GetField("m_LuaClassName", BindingFlags.Instance | BindingFlags.NonPublic);
-		string className = classNameField?.GetValue(target) as string;
-		string newClassName = EditorGUILayout.TextField(className);
-		if (newClassName != className) {
-			Undo.RecordObject(target, "LuaClassName");
-			classNameField?.SetValue(target, newClassName);
-		}
-		
-		if (GUILayout.Button("Deduce Fields", GUILayout.Width(100F))) {
+
+		public override void OnInspectorGUI() {
+			FieldInfo injectionListField = typeof(LuaInjectionData).GetField("m_InjectionList", BindingFlags.Instance | BindingFlags.NonPublic);
+			List<Injection7> injections = injectionListField?.GetValue(target) as List<Injection7>;
 			if (injections != null) {
-				LuaInjectionDataDeduce.DeduceFieldsByClassName(injections, newClassName);
+				m_InjectionDrawer.DrawDict(injections, target);
 			}
-		}
-		EditorGUILayout.EndHorizontal();
-		
-		if (GUI.changed) {
-			EditorUtility.SetDirty(target);
+
+			EditorGUILayout.BeginHorizontal();
+			EditorGUILayout.LabelField("Lua Class", GUILayout.Width(80F));
+
+			FieldInfo classNameField = typeof(LuaInjectionData).GetField("m_LuaClassName", BindingFlags.Instance | BindingFlags.NonPublic);
+			string className = classNameField?.GetValue(target) as string;
+			string newClassName = EditorGUILayout.TextField(className);
+			if (newClassName != className) {
+				Undo.RecordObject(target, "LuaClassName");
+				classNameField?.SetValue(target, newClassName);
+			}
+
+			if (GUILayout.Button("Deduce Fields", GUILayout.Width(100F))) {
+				if (injections != null) {
+					LuaInjectionDataDeduce.DeduceFieldsByClassName(injections, newClassName);
+				}
+			}
+			EditorGUILayout.EndHorizontal();
+
+			if (GUI.changed) {
+				EditorUtility.SetDirty(target);
+			}
 		}
 	}
 }
+

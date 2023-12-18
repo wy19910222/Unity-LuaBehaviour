@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using XLua;
 using UObject = UnityEngine.Object;
 
-namespace CSLike {
+namespace LuaApp {
 	public static class InjectionConverter {
 		public static LuaTable ToDictTable<T>(List<T> array, LuaTable table = null) where T : Injection {
 			table ??= LuaMain.Instance.LuaEnv.NewTable();

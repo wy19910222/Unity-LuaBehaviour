@@ -11,7 +11,7 @@ using UnityEngine;
 
 using UObject = UnityEngine.Object;
 
-namespace CSLike {
+namespace LuaApp {
 	public enum InjectionType {
 		Space = -1,
 		String = 0,

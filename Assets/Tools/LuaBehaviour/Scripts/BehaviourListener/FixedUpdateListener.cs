@@ -8,7 +8,7 @@
 using System;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	public class FixedUpdateListener : BehaviourListener {
 		public Action<LuaTable> fixedUpdate;
 

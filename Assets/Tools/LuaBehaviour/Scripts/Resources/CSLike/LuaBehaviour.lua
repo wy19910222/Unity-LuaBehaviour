@@ -23,12 +23,6 @@ end
 
 ---@protected
 function m:OnDestroy()
-	if CSLike.EventManager.Instance then
-		CSLike.EventManager.Instance:OffAll(self);
-	end
-	if CSLike.CoroutineManager.Instance then
-		CSLike.CoroutineManager.Instance:StopAllCos(self.m_CSBehaviour);
-	end
 	for key, value in pairs(self) do
 		if type(value) == "userdata" then
 			self[key] = nil;

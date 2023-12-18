@@ -9,7 +9,7 @@ using System;
 using UnityEngine;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	public class PhysicsListener : BehaviourListener {
 		public Action<LuaTable, Collider> onTriggerEnter;
 		public Action<LuaTable, Collider> onTriggerStay;

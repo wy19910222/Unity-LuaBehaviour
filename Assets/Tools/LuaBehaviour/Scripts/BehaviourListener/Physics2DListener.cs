@@ -9,7 +9,7 @@ using System;
 using UnityEngine;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	public class Physics2DListener : BehaviourListener {
 		public Action<LuaTable, Collider2D> onTriggerEnter2D;
 		public Action<LuaTable, Collider2D> onTriggerStay2D;

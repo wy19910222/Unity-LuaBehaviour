@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	public class LuaBehaviourWithPath : LuaBehaviour {
 		public string luaPath;
 		
@@ -56,6 +56,7 @@ namespace CSLike {
 
 		[ContextMenu("Inject Data")]
 		protected override void InjectData() {
+			base.InjectData();
 			InjectionConverter.ToDictTable(m_InjectionList, m_LuaTable);
 		}
 

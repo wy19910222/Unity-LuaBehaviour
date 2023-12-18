@@ -9,7 +9,7 @@ using System;
 using UnityEngine.EventSystems;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	/// <summary>
 	/// InitializePotentialDrag、BeginDrag和EndDrag事件不会冒泡，但不会劫持ScrollView的滚动，而Drag事件会，所以分开监听
 	/// </summary>

@@ -8,7 +8,7 @@
 using System;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	public class ApplicationListener : BehaviourListener {
 		public Action<LuaTable, bool> onApplicationFocus;
 		public Action<LuaTable, bool> onApplicationPause;

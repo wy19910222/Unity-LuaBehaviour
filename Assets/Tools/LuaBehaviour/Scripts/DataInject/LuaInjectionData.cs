@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	public class LuaInjectionData : MonoBehaviour {
 #if UNITY_EDITOR
 		// ReSharper disable once NotAccessedField.Local

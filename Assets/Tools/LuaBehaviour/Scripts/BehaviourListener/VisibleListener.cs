@@ -8,7 +8,7 @@
 using System;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	public class VisibleListener : BehaviourListener {
 		public Action<LuaTable> onBecameVisible;
 		public Action<LuaTable> onBecameInvisible;

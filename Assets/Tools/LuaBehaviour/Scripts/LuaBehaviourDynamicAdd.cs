@@ -5,11 +5,10 @@
  * @EditTime: 2023-02-25 13:18:58 321
  */
 
-using System.Collections.Generic;
 using UnityEngine;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	public class LuaBehaviourDynamicAdd : LuaBehaviour {
 		public LuaInjectionData injectionData;
 
@@ -28,13 +27,15 @@ namespace CSLike {
 				Dispose();
 				return;
 			}
-			
 			Init(luaInstanceTable);
 		}
 
 		[ContextMenu("Inject Data")]
 		protected override void InjectData() {
-			injectionData.ToDictTable(m_LuaTable);
+			base.InjectData();
+			if (injectionData) {
+				injectionData.ToDictTable(m_LuaTable);
+			}
 		}
 	}
 }

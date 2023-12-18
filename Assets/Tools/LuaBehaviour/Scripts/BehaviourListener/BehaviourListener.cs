@@ -9,7 +9,7 @@ using System;
 using UnityEngine;
 using XLua;
 
-namespace CSLike {
+namespace LuaApp {
 	public abstract class BehaviourListener : MonoBehaviour, IDisposable {
 		public LuaTable luaTable;
 
