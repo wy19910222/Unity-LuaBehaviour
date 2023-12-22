@@ -21,8 +21,6 @@ using LuaApp;
 using UObject = UnityEngine.Object;
 
 public static class LuaInjectionDataDeduce {
-	private const string LUA_SRC_PATH = "Assets/Basic/Scripts/Lua/";
-	private const string LUA_FILE_EXT = ".lua";
 	private const string BASE_CLASS_NAME = "CSLike.Object";
 	
 	private const string KEYWORD_STATIC = "@static";
@@ -61,7 +59,7 @@ public static class LuaInjectionDataDeduce {
 	/// <param name="luaPath">lua require路径</param>
 	/// <param name="injections">结构生成在这里</param>
 	public static void DeduceFields(List<Injection7> injections, string luaPath) {
-		string luaFilePath = LUA_SRC_PATH + (luaPath?.Replace(".", "/") ?? string.Empty) + LUA_FILE_EXT;
+		string luaFilePath = LuaBehaviourSettings.instance.LuaPathToFilePath(luaPath);
 		string luaStr = GetTextContent(luaFilePath);
 		string[] pathParts = luaFilePath.Split('.');
 		if (pathParts.Length > 1) {
@@ -104,7 +102,7 @@ public static class LuaInjectionDataDeduce {
 	/// </summary>
 	/// <param name="luaPath">lua require路径</param>
 	public static string[] GetMethodNames(string luaPath) {
-		string luaFilePath = LUA_SRC_PATH + (luaPath?.Replace(".", "/") ?? string.Empty) + LUA_FILE_EXT;
+		string luaFilePath = LuaBehaviourSettings.instance.LuaPathToFilePath(luaPath);
 		string luaStr = GetTextContent(luaFilePath);
 		string[] pathParts = luaFilePath.Split('.');
 		if (pathParts.Length > 1) {
@@ -135,7 +133,7 @@ public static class LuaInjectionDataDeduce {
 	/// <param name="luaPath">lua require路径</param>
 	/// <param name="includePropertyAndIgnore">是否包含被{KEYWORD_PROPERTY}或{KEYWORD_IGNORE}修饰的字段</param>
 	public static string[] GetFieldNames(string luaPath, bool includePropertyAndIgnore = false) {
-		string luaFilePath = LUA_SRC_PATH + (luaPath?.Replace(".", "/") ?? string.Empty) + LUA_FILE_EXT;
+		string luaFilePath = LuaBehaviourSettings.instance.LuaPathToFilePath(luaPath);
 		string luaStr = GetTextContent(luaFilePath);
 		string[] pathParts = luaFilePath.Split('.');
 		if (pathParts.Length > 1) {
@@ -542,7 +540,8 @@ public static class LuaInjectionDataDeduce {
 
 	private static List<string[]> GetAllLuaLinesCache() {
 		if (m_AllLuaLinesCache.Count == 0) {
-			string[] filePaths = Directory.GetFiles(LUA_SRC_PATH, "*" + LUA_FILE_EXT, SearchOption.AllDirectories);
+			string[] filePaths = Directory.GetFiles(LuaBehaviourSettings.instance.luaSrcPath,
+					"*" + LuaBehaviourSettings.instance.luaFileExtension, SearchOption.AllDirectories);
 			foreach (var filePath in filePaths) {
 				string luaStr = GetTextContent(filePath);
 				string[] luaStrLines = luaStr.Replace("\r\n", "\n").Trim().Split('\n');

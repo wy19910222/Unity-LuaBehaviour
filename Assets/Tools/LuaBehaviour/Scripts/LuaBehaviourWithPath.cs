@@ -26,14 +26,12 @@ namespace LuaApp {
 		}
 		
 		protected override void Awake() {
-			InitLuaByPath();
+			if (m_State == State.UNINITIALIZED) {
+				InitLuaByPath();
+			}
 		}
 
 		private void InitLuaByPath() {
-			if (m_State != State.UNINITIALIZED) {
-				Debug.LogError("This LuaBehaviour is already initialized!");
-				return;
-			}
 			if (string.IsNullOrEmpty(luaPath)) {
 				Debug.LogError("LuaPath is empty!");
 				return;

@@ -13,11 +13,19 @@ using UnityEngine.UIElements;
 namespace LuaApp {
 #if UNITY_2020_3_OR_NEWER
 	[FilePath("ProjectSettings/LuaBehaviourSettings.asset", FilePathAttribute.Location.ProjectFolder)]
-	internal class LuaBehaviourSettings : ScriptableSingleton<LuaBehaviourSettings> {
+	public class LuaBehaviourSettings : ScriptableSingleton<LuaBehaviourSettings> {
 		[SerializeReference] public string luaSrcPath = "Assets/";
 		[SerializeReference] public string luaFileExtension = ".lua";
+
+		public string LuaPathToFilePath(string luaPath) {
+			if (string.IsNullOrEmpty(luaPath)) {
+				Debug.LogError("LuaPath is null or empty!");
+				return string.Empty;
+			}
+			return luaSrcPath + luaPath.Replace(".", "/") + luaFileExtension;
+		}
 		
-		internal void Save() {
+		public void Save() {
 			Save(true);
 		}
 	}

@@ -17,9 +17,6 @@ using UObject = UnityEngine.Object;
 namespace LuaApp {
 	[CustomEditor(typeof(LuaBehaviourWithPath), true)]
 	public class LuaBehaviourWithPathInspector : LuaBehaviourInspector {
-		protected const string LUA_SRC_PATH = "Assets/Tools/LuaBehaviour/Demo/Resources/Lua/";
-		protected const string LUA_FILE_EXT = ".lua";
-
 		protected LuaBehaviourWithPath LuaBehaviour => target as LuaBehaviourWithPath;
 
 		private LuaInjectionDataDrawer m_InjectionDrawer;
@@ -61,7 +58,9 @@ namespace LuaApp {
 				EditorGUI.BeginDisabledGroup(Application.isPlaying);
 				string luaPath = LuaBehaviour.luaPath;
 				bool luaPathIsEmpty = string.IsNullOrEmpty(luaPath);
-				UObject asset = luaPathIsEmpty ? null : AssetDatabase.LoadAssetAtPath<TextAsset>(LUA_SRC_PATH + luaPath.Replace(".", "/") + LUA_FILE_EXT);
+				string luaSrcPath = LuaBehaviourSettings.instance.luaSrcPath;
+				string luaFileExtension = LuaBehaviourSettings.instance.luaFileExtension;
+				UObject asset = luaPathIsEmpty ? null : AssetDatabase.LoadAssetAtPath<TextAsset>(luaSrcPath + luaPath.Replace(".", "/") + luaFileExtension);
 				if (luaPathIsEmpty || asset) {
 					UObject newAsset = EditorGUILayout.ObjectField(asset, typeof(TextAsset), true);
 					if (newAsset != asset) {
@@ -73,9 +72,9 @@ namespace LuaApp {
 							LuaBehaviour.luaPath = luaPath;
 						} else {
 							string newLuaPath = AssetDatabase.GetAssetPath(newAsset);
-							if (newLuaPath.StartsWith(LUA_SRC_PATH) && newLuaPath.EndsWith(LUA_FILE_EXT)) {
-								int length = newLuaPath.Length - LUA_SRC_PATH.Length - LUA_FILE_EXT.Length;
-								luaPath = newLuaPath.Substring(LUA_SRC_PATH.Length, length).Replace("/", ".");
+							if (newLuaPath.StartsWith(luaSrcPath) && newLuaPath.EndsWith(luaFileExtension)) {
+								int length = newLuaPath.Length - luaSrcPath.Length - luaFileExtension.Length;
+								luaPath = newLuaPath.Substring(luaSrcPath.Length, length).Replace("/", ".");
 								asset = newAsset;
 								Undo.RecordObject(LuaBehaviour, "LuaPath");
 								LuaBehaviour.luaPath = luaPath;
