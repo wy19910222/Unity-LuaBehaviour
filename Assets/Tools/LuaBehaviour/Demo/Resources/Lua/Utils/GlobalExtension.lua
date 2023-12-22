@@ -3,11 +3,12 @@
 --@LastEditor: wangyun
 --@EditTime: 2022-02-27 03:03:16 582
 
+local builtInPairs = pairs;
 ---@param data System.Collections.IEnumerable | table
 ---@return (fun(t:System.Collections.IEnumerable, index:number):number, any), System.Collections.IEnumerable, number
-function cspairs(data)
+function pairs(data)
 	if type(data) == "table" then
-		return pairs(data);
+		return builtInPairs(data);
 	end
 	local enumerator = data:GetEnumerator();
 	-----@param t System.Collections.IEnumerable
@@ -26,11 +27,12 @@ function cspairs(data)
 	return next, data, -1;
 end
 
+local builtInIPairs = ipairs;
 ---@param data System.Collections.IEnumerable | table
 ---@return (fun(t:System.Collections.IEnumerable, index:number):number, any), System.Collections.IEnumerable, number
-function csipairs(data)
+function ipairs(data)
 	if type(data) == "table" then
-		return ipairs(data);
+		return builtInIPairs(data);
 	end
 	local enumerator = data:GetEnumerator();
 	-----@param t System.Collections.IEnumerable
@@ -44,36 +46,19 @@ function csipairs(data)
 	return next, data, -1;
 end
 
----@type table
-WeakTable = setmetatable({}, {__mode = "kv"});
+LogVerbose = CS.Log.Verbose;
+LogDebug = CS.Log.Debug;
+LogInfo = CS.Log.Info;
+LogWarn = CS.Log.Warn;
+LogError = function(...)
+	if CS.Log.LogLevel:GetHashCode() >= CS.LogLevel.ERROR:GetHashCode() then
+		local args = table.pack(...);
+		local argCount = args.n + 1;
+		args[argCount] = debug.traceback(nil, 2);
+		CS.Log.Error(table.unpack(args, 1, argCount));
+	end
+end;
 
 ---@type UnityEngine.TextAsset
 local utilAsset = CS.UnityEngine.Resources.Load("xlua/util.lua", typeof(CS.UnityEngine.TextAsset));
 xpcall(function() util = load(utilAsset.text)(); end, function(error) LogError(error); end);
-
----@overload fun(list:table):number
----@generic V
----@param list table<number, V> | V[]
----@param comp fun(a:V, b:V):boolean @返回true不交换顺序，返回false交换顺序
----@return number
-function table.bubbleSort(list, comp)
-	local count = #list;
-	if count > 1 then
-		local sortBorder = count;
-		for _ = 1, count - 1 do
-			local isSortComplete = true;
-			local lastSwapIndex = 1;
-			for j = 1, sortBorder - 1 do
-				if not comp(list[j], list[j + 1]) then
-					list[j], list[j + 1] = list[j + 1], list[j];
-					isSortComplete = false;
-					lastSwapIndex = j;
-				end
-			end
-			sortBorder = lastSwapIndex;
-			if isSortComplete then
-				break;
-			end
-		end
-	end
-end

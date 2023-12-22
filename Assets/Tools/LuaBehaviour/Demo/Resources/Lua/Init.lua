@@ -1,0 +1,10 @@
+require("Utils.GlobalExtension");
+require("Utils.LuaBehaviourExtension");
+require("Utils.AsyncTask");
+require("Utils.BehaviourUtility");
+require("Utils.UIBase");
+require("Utils.UIFade");
+require("Manager.EventManager");
+require("Manager.CoroutineManager");
+require("Manager.AssetManager");
+require("Manager.UIManager");
