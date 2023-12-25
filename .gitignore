@@ -50,3 +50,5 @@ sysinfo.txt
 
 /[Aa]ssets/XLua/Gen
 /[Aa]ssets/XLua/Gen.meta
+
+/LuaLib/*
