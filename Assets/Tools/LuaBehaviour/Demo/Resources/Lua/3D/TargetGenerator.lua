@@ -40,7 +40,6 @@ function m:Generate()
 	CSLike.BehaviourUtility.AddListener(collider.gameObject, {
 		---@param other UnityEngine.Collider
 		OnTriggerEnter = function(_, other)
-			CS.Log.ErrorGo(other, "Target:", other);
 			CS.UnityEngine.Object.Destroy(target.gameObject);
 			self:Generate();
 		end

@@ -32,7 +32,6 @@ end
 ---@private
 ---@param other UnityEngine.Collider
 function m:OnTriggerEnter(other)
-	CS.Log.ErrorGo(other, "Bullet:", other);
 	-- 这里只会碰到目标，所以就不做判断了
 	CS.UnityEngine.Object.Destroy(self.m_CSBehaviour.gameObject);
 end
