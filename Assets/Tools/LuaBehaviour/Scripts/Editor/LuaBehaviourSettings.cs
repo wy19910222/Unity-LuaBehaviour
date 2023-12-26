@@ -14,8 +14,8 @@ namespace LuaApp {
 #if UNITY_2020_3_OR_NEWER
 	[FilePath("ProjectSettings/LuaBehaviourSettings.asset", FilePathAttribute.Location.ProjectFolder)]
 	public class LuaBehaviourSettings : ScriptableSingleton<LuaBehaviourSettings> {
-		[SerializeReference] public string luaSrcPath = "Assets/";
-		[SerializeReference] public string luaFileExtension = ".lua";
+		public string luaSrcPath = "Assets/";
+		public string luaFileExtension = ".lua";
 
 		public string LuaPathToFilePath(string luaPath) {
 			if (string.IsNullOrEmpty(luaPath)) {

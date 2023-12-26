@@ -1,6 +1,4 @@
-﻿using System;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LuaApp {
 	public partial class LuaMain {
@@ -15,11 +13,17 @@ namespace LuaApp {
 					m_Initialized = true;
 					LuaEnv = m_Instance.LuaEnv;
 					m_LoadedBuiltInSet.Clear();
-					m_LoadedBuiltInSet.AddRange(m_Instance.m_LoadedBuiltInSet);
+					foreach (var item in m_Instance.m_LoadedBuiltInSet) {
+						m_LoadedBuiltInSet.Add(item);
+					}
 					m_PreloadBuiltInSet.Clear();
-					m_PreloadBuiltInSet.AddRange(m_Instance.m_PreloadBuiltInSet);
+					foreach (var item in m_Instance.m_PreloadBuiltInSet) {
+						m_PreloadBuiltInSet.Add(item);
+					}
 					m_GlobalVarBuiltInSet.Clear();
-					m_GlobalVarBuiltInSet.AddRange(m_Instance.m_GlobalVarBuiltInSet);
+					foreach (var item in m_Instance.m_GlobalVarBuiltInSet) {
+						m_GlobalVarBuiltInSet.Add(item);
+					}
 					m_Require = m_Instance.m_Require;
 					m_FuncInvoke = m_Instance.m_FuncInvoke;
 					

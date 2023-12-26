@@ -133,11 +133,11 @@ public static class Log {
 
 	private static string ObjsToString(params object[] objs) {
 		int length = objs.Length;
-		switch (length) {
-			case <= 0:
-				return "";
-			case 1:
-				return objs[0]?.ToString() ?? "Null";
+		if (length <= 0) {
+			return "";
+		}
+		if (length == 1) {
+			return objs[0]?.ToString() ?? "Null";
 		}
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.Append(objs[0] ?? "Null");

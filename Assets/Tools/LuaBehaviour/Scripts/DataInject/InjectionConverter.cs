@@ -12,7 +12,9 @@ using UObject = UnityEngine.Object;
 namespace LuaApp {
 	public static class InjectionConverter {
 		public static LuaTable ToDictTable<T>(List<T> array, LuaTable table = null) where T : Injection {
-			table ??= LuaMain.Instance.LuaEnv.NewTable();
+			if (table == null) {
+				table = LuaMain.Instance.LuaEnv.NewTable();
+			}
 			foreach (var injection in array) {
 				// 正常情况下Type为Space时，Name必定为空，所以先判断Name可以短路后面的判断
 				if (!string.IsNullOrEmpty(injection.Name) && injection.Type != InjectionType.Space) {
@@ -43,7 +45,9 @@ namespace LuaApp {
 		}
 
 		public static LuaTable ToListTable<T>(List<T> array, LuaTable table = null) where T : Injection {
-			table ??= LuaMain.Instance.LuaEnv.NewTable();
+			if (table == null) {
+				table = LuaMain.Instance.LuaEnv.NewTable();
+			}
 			for (int index = 0, realIndex = 0, length = array.Count; index < length; ++index) {
 				Injection injection = array[index];
 				if (injection.Type != InjectionType.Space) {
