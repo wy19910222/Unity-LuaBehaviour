@@ -7,13 +7,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using XLua;
 
 namespace LuaApp {
-	public class LuaBehaviour : MonoBehaviour {
+	public abstract class LuaBehaviour : MonoBehaviour {
 		protected enum State {
 			UNINITIALIZED,
 			INITIALIZED,

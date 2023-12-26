@@ -1,6 +1,5 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public static class GameObjectMenu {
 	[MenuItem("GameObject/UI/New Text #&t", false, -1)]
@@ -45,8 +44,5 @@ public static class GameObjectMenu {
 		UnityEngine.UI.Image image = go.AddComponent<UnityEngine.UI.Image>();
 		image.raycastTarget = false;
 		image.maskable = false;
-	}
-
-	public static void Test() {
 	}
 }
