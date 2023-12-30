@@ -39,9 +39,7 @@ function m:Awake()
 			tweenNext:Rewind(true);
 			tweenNext:Play();
 			self.m_Showing = not self.m_Showing;
-			if self.m_Showing then
-				self.btnFold.gameObject:SetActive(true);
-			end
+			self.btnFold.gameObject:SetActive(self.m_Showing);
 		end
 	end);
 	self.btnFold.onClick:AddListener(function()
