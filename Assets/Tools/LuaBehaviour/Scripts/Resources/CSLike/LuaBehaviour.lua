@@ -14,6 +14,7 @@ CSLike.LuaBehaviourMap = s_WeakMap;
 
 ---@private
 function m:ctor()
+	-- 用于监控对象回收情况，如果不需要，可以删除
 	local timestamp = CS.System.DateTime.Now.Ticks;
 	local nameSpace = self.nameSpace or "nil";
 	local className = self.className;
@@ -23,6 +24,7 @@ end
 
 ---@protected
 function m:OnDestroy()
+	-- 移除所有对C#对象的引用，避免两边相互引用，然后等待Lua和C#分别垃圾回收
 	for key, value in pairs(self) do
 		if type(value) == "userdata" then
 			self[key] = nil;
