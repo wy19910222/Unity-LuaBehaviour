@@ -26,7 +26,7 @@ public static class LuaInjectionDataDeduce {
 	private const string KEYWORD_STATIC = "@static";
 	private const string KEYWORD_PROPERTY = "@property";
 	private const string KEYWORD_IGNORE = "@ignore";
-	private const string KEYWORD_COMPONENT = "@component";
+	private const string KEYWORD_COMPONENT = "@injection";
 	
 	// [a-zA-Z_]\w*
 	private const string PATTERN_VAR_NAME = @"[a-zA-Z_]\w*";
@@ -347,8 +347,17 @@ public static class LuaInjectionDataDeduce {
 							}
 							List<string> pairs = GetTypeStrs(typeStr.Substring(1, typeStr.Length - 2).Split(','), ",");
 							foreach (string pair in pairs) {
-								string[] parts = pair.Trim().Split(':');
-								SetInjection(injection.Value, parts[0].Trim(), parts[1].Trim());
+								string _pair = pair.Trim();
+								int colonIndex = _pair.IndexOf(':');
+								string _fieldName, _typeStr;
+								if (colonIndex == -1) {
+									_fieldName = _pair;
+									_typeStr = string.Empty;
+								} else {
+									_fieldName = _pair.Substring(0, colonIndex);
+									_typeStr = _pair.Substring(colonIndex + 1);
+								}
+								SetInjection(injection.Value, _fieldName.Trim(), _typeStr.Trim());
 							}
 						}
 						continue;
