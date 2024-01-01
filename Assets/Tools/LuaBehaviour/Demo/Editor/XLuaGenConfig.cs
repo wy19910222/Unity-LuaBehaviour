@@ -187,7 +187,6 @@ public static class XLuaGenConfig
                 
                 // UnityEngine.UIScrollRect.ScrollRectEvent.AddListener
                 typeof(UnityEngine.Events.UnityAction<UnityEngine.Vector2>),
-                typeof(Func<string, int, bool>)
             });
             
             return delegate_types;

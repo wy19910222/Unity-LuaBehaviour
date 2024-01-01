@@ -1,0 +1,96 @@
+v2.6 2023年8月19日
+优化
+1、将namespace也单独导出成一个table。
+2、由于EmmyLua插件对三段及以上的赋值不友好（A.B.C = C），所以导出的声明文件把每一段拆出来赋值。
+2、泛型模板类多声明出一个函数以支持XLua的泛型类构造方式，如：
+	local List_GameObject = CS.System.Collections.Generic.List(CS.UnityEngine.GameObject);	-- 得到泛型类
+	local objList = List_GameObject();	-- 得到泛型对象
+
+v2.5 2023年6月7日
+优化
+1、由于Window文件路径长度限制，导出非zip文件后，可能出现某些文件后续无法进行操作的问题。
+修复
+1、修复了类型如果是ByRefType，类型判断会不准确的问题。
+1、修复了数字类型判断漏了decimal类型的问题。
+
+v2.4 2023年4月19日
+优化
+1、非重载函数里的不定参数改用---@vararg。
+修复
+1、修复了多行obsoleteMessage生成错误注释的问题。
+
+v2.3 2023年3月27日
+优化
+1、因为XLua在编辑器环境下也能调用Editor代码，可能会有lua代码操作AssetDatabase的需求，所以也导出UnityEditor程序集，其他程序集如果有需要，请使用者自己新增。
+
+v2.2 2023年3月26日
+优化
+1、新增构造函数声明。
+
+v2.1 2023年3月25日
+优化
+1、排除XLua生成的Wrap。
+
+v2.0 2023年3月13日
+修改
+1、支持直接导出lua文件而非zip，以供Rider、VSCode和其他IDE使用。
+
+v1.9 2022年11月15日
+优化
+1、如果函数被ObsoleteAttribute修饰，那么导出时新增"--- obsolete: XXX"注释。
+
+v1.8 2022年7月9日
+优化
+1、List和IDictionary类型新增ICollection声明。
+
+v1.7 2022年6月25日
+优化
+1、泛型扩展方法当成约束类的扩展方法。
+2、泛型返回值当成是泛型模板类。
+
+v1.6 2022年3月30日
+修复
+1、fun()参数如果是函数，需要加括号。
+修改
+1、通过LuaCallCSharp里的类找到对应程序集后，导出程序集里的所有类，而不仅仅只导出LuaCallCSharp里的类。
+
+v1.5 2022年3月18日
+修复
+1、纯泛型类（如T）错误导出修复。
+2、多返回值和嵌套fun的括号语法错误修复。
+3、现在@后跟不存在的关键字（如@static）会报错，所以去掉。
+4、扩展方法加到类里应该算实例方法，用“:”而不是用“.”。
+5、XLua.LuaTable应该识别成table，而不是XLua.LuaTable类。
+优化
+1、需要导出的程序集现在通过获取LuaCallCSharp里的所有类和遍历ScriptAssemblies目录下的dll得到。
+2、支持导出被event关键字修饰的成员变量，按XLua的使用方式导出，如果使用方式不兼容，请自行修改。
+
+v1.4 2018年7月26日
+修复
+1、函数返回值个数为一个以上时，增加括号。如：fun():(number, number)
+2、当函数内参数或函数内单个返回值的类型为函数时，增加必要的括号。如：fun(arg1:(fun():number)):(fun():number)
+优化
+1、为了能用@type声明命名空间，所以将命名空间也声明为@class。
+2、将不定参数的参数名翻译为“...”
+
+v1.3 2018年6月26日
+修复
+1、Unity 2017及以上版本的UnityEngine.dll里没有类，改用UnityEngine.CoreModule。
+2、当工程里还没有写脚本时，Assembly-CSharp.dll不存在，所以Assembly.Load(dllName)用try/catch(FileNotFoundException)包围。
+优化
+1、输出路径插入LuaLib目录，所有输出的zip都放在一个文件夹下。在写入文件时判断该目录是否存在。
+
+v1.2 2018年5月25日
+优化
+1、新增对扩展方法的翻译支持。
+
+v1.1 2018年5月3日
+修复
+1、参数名称避开lua的关键字，在参数名前加“_”。
+
+v1.0 2018年3月1日
+修复
+1、修复了翻译泛型模板类报空指针的bug。
+
+2018年2月26日
+由于EmmyLua直接引用dll文件时，自带的翻译功能翻译地不是很准确，于是有了这个工具。

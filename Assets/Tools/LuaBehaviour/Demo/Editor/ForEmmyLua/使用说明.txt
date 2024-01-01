@@ -1,0 +1,37 @@
+DllToLuaLib.cs
+    脚本里有对XLua的引用，如果使用的是其他Lua框架，需要自行修改代码，应该很简单的。
+    把DLL程序集翻译成EmmyLua格式的注解并打成zip压缩包（或不打包）。
+ICSharpCode.SharpZipLib.dll
+    提供zip压缩功能的程序集。
+
+以下产生的文件都默认在Unity工程目录下的LuaLib文件夹内
+
+DllToLuaLib使用方法：
+    1.将DllToLuaLib.cs和ICSharpCode.SharpZipLib.dll两个文件复制到工程里的Editor目录下（没有的话自己创建一个）。如果不打包，可以不需要dll，但代码有引用，需要把打包逻辑删掉。
+    2.等待工程编译完成，点击菜单项"XLua/EmmyLua/DllToLuaLib/对应的IDE名称"并等待。“IDEA”选项是最终打包成zip文件，另一个选项是最终不打包，导出成散的lua文件。如果IDE是IDEA，则两者都可以选择，否则请选另一个选项。
+    3.在Unity控制台里出现“XXX generating is complete!”后，在IDE中引入生成的文件。
+
+IDEA引用zip方法：
+    请参考《IDEA引用某个文件夹下所有zip的方法.gif》
+    1.选择菜单项“File/Project Structure”打开“Project Structure”窗口。
+    2.选择“Project Settings/Libraries”，新建Library。如果想直接引用目录，请参考“引用某个文件夹下所有zip的方法.gif”。
+    3.选择“Project Settings/Modules”，选中右边的“Dependencies”标签页，将新建的Library依赖进来。
+    4.点击“OK”按钮保存并关闭窗口。
+    引用某个文件夹下所有zip的方法同样可以引用某个文件夹下所有Lua文件。
+
+Rider引用外部lua方法：
+    请参考《Rider引用外部文件夹下Lua文件的方法.gif》
+    Rider不能引用zip。
+
+VSCode引用外部lua方法：
+    请参考《VSCode引用外部文件夹下Lua文件的方法.gif》
+    VSCode不能引用zip。
+
+
+XluaNameSpaceMap.CS
+    由于XLua的风格是把所有C#端的类全放在一个叫CS的table下的，为了兼容这种风格，需要额外增加一个命名空间的映射。
+
+XluaNameSpaceMap使用方法：
+    1.将XluaNameSpaceMap.cs和ICSharpCode.SharpZipLib.dll两个文件复制到工程里的Editor目录下（没有的话自己创建一个）。。如果不打包，可以不需要dll，但代码有引用，需要把打包逻辑删掉。
+    2.等待工程编译完成，点击菜单项“XLua/EmmyLua/GenerateNameSpaceMap/对应的IDE名称"并等待。“IDEA”选项是最终打包成zip文件，另一个选项是最终不打包，导出成散的lua文件。如果IDE是IDEA，则两者都可以选择，否则请选另一个选项。
+    3.在Unity控制台里出现“NameSpaceMap generating is complete!”后，在IDE中引入即可。
