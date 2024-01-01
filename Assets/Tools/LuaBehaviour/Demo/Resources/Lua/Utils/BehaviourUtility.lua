@@ -48,7 +48,7 @@ function m.Singleton(nameSpace, className, dontDestroyOnLoad)
 end
 
 ---可以对某个GameObject或Component监听以下事件
----Awake、Start、Update、FixedUpdate、LateUpdate、OnEnable、OnDisable、OnDestroy、OnGUI、OnApplicationQuit
+---Awake、Start、Update、FixedUpdate、LateUpdate、OnEnable、OnDisable、OnDestroy、OnGUI
 ---OnBecameVisible、OnBecameInvisible、OnApplicationFocus、OnApplicationPause、OnApplicationQuit
 ---OnTriggerEnter/Stay/Exit、OnCollisionEnter/Stay/Exit、OnTriggerEnter2D/Stay2D/Exit2D、OnCollisionEnter2D/Stay2D/Exit2D
 ---OnDrag、OnDrop、OnInitializePotentialDrag、OnBeginDrag、OnEndDrag
