@@ -7,7 +7,7 @@
 * **支持注入的嵌套层数：** 8层
 * **支持注入的数据类型：** string、int、enum、float、bool、Color、Vector2/3/4、AnimationCurve、Object、GameObject、Transform、Behaviour、其他Component，另外还支持把另一个LuaBehaviour做成table注入进来。
 * **支持的生命周期函数：**  
-  Awake、Start、Update、FixedUpdate、LateUpdate、OnEnable、OnDisable、OnDestroy、OnGUI、OnApplicationQuit  
+  Awake、Start、Update、FixedUpdate、LateUpdate、OnEnable、OnDisable、OnDestroy、OnGUI  
   OnBecameVisible、OnBecameInvisible、OnApplicationFocus、OnApplicationPause、OnApplicationQuit  
   OnTriggerEnter/Stay/Exit、OnCollisionEnter/Stay/Exit、OnTriggerEnter2D/Stay2D/Exit2D、OnCollisionEnter2D/Stay2D/Exit2D  
   OnDrag、OnDrop、OnInitializePotentialDrag、OnBeginDrag、OnEndDrag  
@@ -16,7 +16,7 @@
 
 ## 依赖的框架或插件
 
-* **Xlua：** 本框架是基于Xlua开发的。
+* **XLua：** 本框架是基于XLua开发的。
 * **EmmyLua：**
   * 本框架的Lua部分，是通过Rider+EmmyLua插件写的（VSCode也有，去对应的插件市场安装即可），EmmyLua用于代码提示与补全，不需要该功能可以不装EmmyLua插件。
   * 本框架的成员变量结构生成是基于 [EmmyLua的注解语法](https://emmylua.github.io/annotation.html) 的，请稍微浏览一下该文档。
