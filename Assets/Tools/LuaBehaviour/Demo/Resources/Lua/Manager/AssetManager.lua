@@ -100,9 +100,9 @@ function m:GetAssetLoaderTask(assetPath, type)
 		-- 没找到目标，需要新建加载任务
 		task = CSLike.AsyncTask(function(success, fail)
 			CSLike.CoroutineManager.Instance:StartCo(function()
-				local pointIndex = CS.LuaHelp.StringLastIndexOf(assetPath, ".");
+				local pointIndex = CS.LuaApp.LuaHelp.StringLastIndexOf(assetPath, ".");
 				if pointIndex ~= -1 then
-					assetPath = CS.LuaHelp.StringSub(assetPath, 0, pointIndex);
+					assetPath = CS.LuaApp.LuaHelp.StringSub(assetPath, 0, pointIndex);
 				end
 				LogDebug("Load asset:", assetPath, type);
 				---@type UnityEngine.Object

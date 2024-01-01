@@ -41,6 +41,7 @@ function m:Generate()
 		---@param other UnityEngine.Collider
 		OnTriggerEnter = function(_, other)
 			CS.UnityEngine.Object.Destroy(target.gameObject);
+			CSLike.EventManager.Instance:Emit("Hit");
 			self:Generate();
 		end
 	});
