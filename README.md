@@ -2,6 +2,17 @@
 
 整个框架的目的就是把Lua脚本当C#脚本使用，包括但不限于将Lua脚本挂到GameObject上、Lua的面向对象、将C#的命名规范用在Lua上等等。
 本框架在Unity2021.3.29版本上开发，在Unity2019.4.37版本上测试通过，如果需要运行在其他版本上，请尽量自行解决可能出现的版本兼容问题。
+![LuaBehaviourWithPath change width](Captures/LuaBehaviourWithPath0.gif)
+
+* 支持注入的嵌套层数：8层
+* 支持注入的数据类型：string、int、enum、float、bool、Color、Vector2/3/4、AnimationCurve、Object、GameObject、Transform、Behaviour、其他Component，另外还支持把另一个LuaBehaviour做成table注入进来。
+* 支持的生命周期函数：
+  Awake、Start、Update、FixedUpdate、LateUpdate、OnEnable、OnDisable、OnDestroy、OnGUI、OnApplicationQuit  
+  OnBecameVisible、OnBecameInvisible、OnApplicationFocus、OnApplicationPause、OnApplicationQuit  
+  OnTriggerEnter/Stay/Exit、OnCollisionEnter/Stay/Exit、OnTriggerEnter2D/Stay2D/Exit2D、OnCollisionEnter2D/Stay2D/Exit2D  
+  OnDrag、OnDrop、OnInitializePotentialDrag、OnBeginDrag、OnEndDrag  
+  OnPointerClick、OnPointerDown、OnPointerUp、OnPointerEnter、OnPointerExit、OnScroll  
+  OnSelect、OnDeselect、OnUpdateSelected、OnMove、OnSubmit、OnCancel  
 
 ## 依赖的框架或插件
 
