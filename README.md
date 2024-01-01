@@ -4,9 +4,9 @@
 本框架在Unity2021.3.29版本上开发，在Unity2019.4.37版本上测试通过，如果需要运行在其他版本上，请尽量自行解决可能出现的版本兼容问题。
 ![LuaBehaviourWithPath change width](Captures/LuaBehaviourWithPath0.gif)
 
-* 支持注入的嵌套层数：8层
-* 支持注入的数据类型：string、int、enum、float、bool、Color、Vector2/3/4、AnimationCurve、Object、GameObject、Transform、Behaviour、其他Component，另外还支持把另一个LuaBehaviour做成table注入进来。
-* 支持的生命周期函数：
+* **支持注入的嵌套层数：** 8层
+* **支持注入的数据类型：** string、int、enum、float、bool、Color、Vector2/3/4、AnimationCurve、Object、GameObject、Transform、Behaviour、其他Component，另外还支持把另一个LuaBehaviour做成table注入进来。
+* **支持的生命周期函数：**  
   Awake、Start、Update、FixedUpdate、LateUpdate、OnEnable、OnDisable、OnDestroy、OnGUI、OnApplicationQuit  
   OnBecameVisible、OnBecameInvisible、OnApplicationFocus、OnApplicationPause、OnApplicationQuit  
   OnTriggerEnter/Stay/Exit、OnCollisionEnter/Stay/Exit、OnTriggerEnter2D/Stay2D/Exit2D、OnCollisionEnter2D/Stay2D/Exit2D  
