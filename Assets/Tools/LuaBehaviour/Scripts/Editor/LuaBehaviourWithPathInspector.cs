@@ -96,6 +96,7 @@ namespace LuaApp {
 						Undo.RecordObject(LuaBehaviour, "LuaPath");
 						LuaBehaviour.luaPath = newLuaPath;
 					}
+					EditorGUILayout.LabelField(EditorGUIUtility.IconContent("CollabConflict Icon"), GUILayout.Width(20F));
 				}
 				EditorGUI.EndDisabledGroup();
 			} else {
