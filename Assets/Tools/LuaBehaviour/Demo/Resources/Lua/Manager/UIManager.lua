@@ -72,6 +72,7 @@ function m:InitCamera()
 			end
 		end
 	else
+		self.m_Camera.clearFlags = CS.UnityEngine.CameraClearFlags.Depth;
 		local depthMax = 0;
 		---@param camera UnityEngine.Camera
 		for _, camera in ipairs(CS.UnityEngine.Camera.allCameras) do
