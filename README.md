@@ -144,4 +144,4 @@ LuaBehaviour的Inspector面板在运行时还提供了查看Lua实例数据和�
   * **AsyncTask:** 方便执行异步任务的封装，有点像JavaScript的Promise。
   * **EventManager:** 事件分发管理器。
   * **CoroutineManager:** 协程管理器。
-  * **UIManager:** 简单手游的UI管理框架。
+  * **UIManager:** 简单手游的UI管理框架，对了，设计分辨率需要在 [UIManager.lua](Assets/Tools/LuaBehaviour/Demo/Resources/Lua/Manager/UIManager.lua)) 文件开头修改。
