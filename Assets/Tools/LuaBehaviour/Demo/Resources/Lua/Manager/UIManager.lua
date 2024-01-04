@@ -19,7 +19,7 @@ local sortingOrderMap = setmetatable({}, {__mode = "k"});
 ---@field private m_UITaskList CSLike.AsyncTask[]	@界面实例列表，元素类型为壳子（AsyncTask），调用open时，先把壳子加到列表，再去加载界面对象，如果加载失败或取消，再移除壳子。
 ---
 ---@field private m_WaitLoading {View:UnityEngine.RectTransform, FadeIn:fun(), FadeOut:fun()}	@用于加载界面时临时遮挡整个屏幕
----@field private m_TopCollider UnityEngine.UI.Graphic	@用于主动遮挡整个屏幕，支持状态叠加临时
+---@field private m_TopCollider UnityEngine.UI.Graphic	@用于主动遮挡整个屏幕，支持状态叠加，只要存在一个key都遮挡，所有key都移除才不遮挡
 ---@field private m_TopColliderKeyDict table<any, table<string, boolean>>	@用于记录主动遮挡整个屏幕的状态
 ---
 ---@field private m_WeakMap table<string, CSLike.UIBase>	@用弱表来检测界面对象有没有被回收
@@ -267,6 +267,7 @@ function m:InitTopCollider()
 	self.m_TopCollider = graphic;
 end
 
+--- 设置了两层key，外层是owner，方便整体移除
 ---@public
 ---@overload fun(owner: string)
 ---@param owner any
@@ -300,6 +301,7 @@ function m:AddTopCollider(owner, key)
 	end
 end
 
+--- 当只传入owner时，会将owner下的状态整体移除
 ---@public
 ---@overload fun(owner: string)
 ---@param owner any
