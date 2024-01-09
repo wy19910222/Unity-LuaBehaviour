@@ -109,21 +109,6 @@ MonoBehaviour:
     m_ObjectValue: {fileID: 0}
     m_IsFolded: 0
     m_ListOrDictValue: []
-  - m_Name: gravity
-    m_Type: 2
-    m_Constraint: 
-    m_StringValue: 
-    m_NumsValue:
-    - 7
-    m_CurveValue:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_ObjectValue: {fileID: 0}
-    m_IsFolded: 0
-    m_ListOrDictValue: []
 --- !u!1 &5643379501106330296
 GameObject:
   m_ObjectHideFlags: 0

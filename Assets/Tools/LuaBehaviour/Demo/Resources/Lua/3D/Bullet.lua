@@ -6,7 +6,6 @@
 ---@class CSLike.Bullet : CSLike.LuaBehaviour
 ---@field public initialSpeed number
 ---@field public lifetime number
----@field public gravity number
 ---
 ---@field private m_Velocity UnityEngine.Vector3
 local m = CSLike.Class("CSLike", "Bullet", CSLike.LuaBehaviour);
@@ -26,7 +25,7 @@ function m:Update()
 	pos = pos + self.m_Velocity * CS.UnityEngine.Time.deltaTime;
 	self.m_CSBehaviour.transform:LookAt(pos);
 	self.m_CSBehaviour.transform.position = pos;
-	self.m_Velocity.y = self.m_Velocity.y - self.gravity * CS.UnityEngine.Time.deltaTime;
+	self.m_Velocity = self.m_Velocity + CS.UnityEngine.Physics.gravity * CS.UnityEngine.Time.deltaTime;
 end
 
 ---@private
