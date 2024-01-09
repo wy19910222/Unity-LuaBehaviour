@@ -25,14 +25,8 @@ end
 
 ---@private
 function m:OnHit()
-	self.m_Score = self.m_Score + 1;
-	local scoreStr = tostring(self.m_Score);
-	local length = CS.LuaApp.LuaHelp.StringLength(scoreStr);
-	for _ = length, 2 do
-		scoreStr = "0" .. scoreStr;
-		length = length + 1;
-	end
-	self.txtScore.text = CS.LuaApp.LuaHelp.StringSub(scoreStr, length - 3);
+	self.m_Score = math.min(self.m_Score + 1, 999);
+	self.txtScore.text = string.format("%03d", self.m_Score);
 end
 
 return m;
