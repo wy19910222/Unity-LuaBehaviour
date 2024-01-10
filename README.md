@@ -117,7 +117,7 @@
 ## Inspector上的其他内容
 
 LuaBehaviour的Inspector面板在运行时还提供了查看Lua实例数据和临时执行Lua代码功能。
-* 红色区域展示了Lua实例内部的数据，其中LuaFunction会带有两个按钮，一个是静态调用，一个是实例调用，后面跟着的是参数输入框，可以直接以写Lua代码的形式将多个参数传入，如“1, "str", true”。
+* 红色区域展示了Lua实例内部的数据，其中LuaFunction会带有两个按钮，一个是静态调用，一个是实例调用，后面跟着的是参数输入框，可以直接以写Lua代码的形式将多个参数传入，如“`1, "str", true`”。
 * 黄色区域提供了一个写Lua代码的输入框，可以以当前Lua实例作为self执行Lua代码。
 ![LuaBehaviour in runtime](Captures/LuaBehaviour0.png)
 
