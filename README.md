@@ -44,10 +44,10 @@
 
 本工程内容可大致分为XLua、本框架、示例、DOTween插件四个部分。
 
-* **Assets/Plugins和Assets/XLua：** XLua的内容，没有做任何修改。
-* **Assets/Tools/LuaBehaviour/Scripts：** 本框架内容
-* **Assets/Tools/LuaBehaviour/Demo：** 示例内容
-* **Assets/Demigiant：** DOTween插件，没有做任何修改。
+* **[Assets/Plugins](Assets/Plugins)和[Assets/XLua](Assets/XLua)：** XLua的内容，没有做任何修改。
+* **[Assets/Tools/LuaBehaviour/Scripts](Assets/Tools/LuaBehaviour/Scripts)：** 本框架内容
+* **[Assets/Tools/LuaBehaviour/Demo](Assets/Tools/LuaBehaviour/Demo)：** 示例内容
+* **[Assets/Tools/Demigiant](Assets/Tools/Demigiant)：** DOTween插件，没有做任何修改。
 
 ## 导入方法
 
