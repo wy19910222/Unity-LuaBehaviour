@@ -33,7 +33,7 @@
 
 ## 示例大致功能
 
-示例所有内容都在 [Assets/Tools/LuaBehaviour/Demo](Assets/Tools/LuaBehaviour/Demo) 目录下。 详见 [示例提供的内容](#示例提供的内容)  
+示例所有内容都在 [Assets/Tools/LuaBehaviour/Demo](Assets/Tools/LuaBehaviour/Demo) 目录下。  
 
 * 展示LuaBehaviour在UI方面的一种用法，包含一套简单的UI管理框架。
 * 展示LuaBehaviour在3D方面的一种用法。
@@ -129,7 +129,7 @@ LuaBehaviour的Inspector面板在运行时还提供了查看Lua实例数据和�
 * 黄色区域用来全局执行临时的Lua代码。
   ![LuaDataViewer](Captures/LuaDataViewer.png)
 
-## 示例提供的内容
+## 其他说明
 
 * **如何初始化Lua环境并调用Lua入口函数：** 参考 [Demo里的UI场景](Assets/LuaBehaviour/Demo/Scenes/UI.scene) 和 [Demo里的LuaMain脚本](Assets/Tools/LuaBehaviour/Demo/Scripts/LuaMain.cs)。
 * **如何在测试场景中随意使用LuaBehaviour(自动初始化Lua环境但不调用Lua入口函数)：** 直接使用即可，参考 [Demo里的3D场景](Assets/LuaBehaviour/Demo/Scenes/3D.scene)。
