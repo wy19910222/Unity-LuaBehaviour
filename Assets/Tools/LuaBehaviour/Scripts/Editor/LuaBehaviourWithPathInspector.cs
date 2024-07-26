@@ -59,8 +59,8 @@ namespace LuaApp {
 			string luaSrcPath = LuaBehaviourSettings.instance.luaSrcPath;
 			string luaFileExtension = LuaBehaviourSettings.instance.luaFileExtension;
 			UObject asset = !settingsExist || luaPathIsEmpty ? null : AssetDatabase.LoadAssetAtPath<TextAsset>(luaSrcPath + luaPath.Replace(".", "/") + luaFileExtension);;
-			if (asset) {
-				// 已经设置过Lua根目录且能找到Lua文件，则支持文件拖放
+			if (settingsExist && (luaPathIsEmpty || asset)) {
+				// 已经设置过Lua根目录，且路径没错（路径为空或者能找到Lua文件），则支持文件拖放
 				UObject newAsset = EditorGUILayout.ObjectField(asset, typeof(TextAsset), true);
 				if (newAsset != asset) {
 					// 根据lua文件记录lua路径
