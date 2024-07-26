@@ -6,6 +6,7 @@
  */
 
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -86,6 +87,11 @@ namespace LuaApp {
 			if (newLuaFileExtension != m_Settings.luaFileExtension) {
 				Undo.RecordObject(m_Settings, "LuaFileExtension");
 				m_Settings.luaFileExtension = newLuaFileExtension;
+			}
+			
+			bool settingsExist = File.Exists("ProjectSettings/LuaBehaviourSettings.asset");
+			if (!settingsExist) {
+				EditorGUILayout.HelpBox("第一次需要改动一下才生效。", MessageType.Warning);
 			}
 
 			bool isDirty = false;
