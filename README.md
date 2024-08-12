@@ -20,6 +20,7 @@
 * **EmmyLua：**
   * 本框架的Lua部分，是通过Rider+EmmyLua插件写的（VSCode也有，去对应的插件市场安装即可），EmmyLua用于代码提示与补全，不需要该功能可以不装EmmyLua插件。
   * 本框架的成员变量结构生成是基于 [EmmyLua的注解语法](https://emmylua.github.io/annotation.html) 的，请稍微浏览一下该文档。
+  * <mark>最近EmmyLua有更新，新增了对namespace的支持，还支持了partial关键字等，如果项目里用到这些特性，则 **DllToLuaLib功能** 和 **成员变量结构生成功能** 会受到影响，暂时请自行修改相关逻辑。</mark>
 * **DOTween：** 框架本身并没有用到DOTween，不过示例中用到了，这里的DOTween只是用来学习交流，如果需要在今后的开发中用到DOTween，请购买正版。
 
 ## 框架大致功能
@@ -131,17 +132,18 @@ LuaBehaviour的Inspector面板在运行时还提供了查看Lua实例数据和�
 
 ## 其他说明
 
-* **如何初始化Lua环境并调用Lua入口函数：** 参考 [Demo里的UI场景](Assets/LuaBehaviour/Demo/Scenes/UI.scene) 和 [Demo里的LuaMain脚本](Assets/Tools/LuaBehaviour/Demo/Scripts/LuaMain.cs)。
-* **如何在测试场景中随意使用LuaBehaviour(自动初始化Lua环境但不调用Lua入口函数)：** 直接使用即可，参考 [Demo里的3D场景](Assets/LuaBehaviour/Demo/Scenes/3D.scene)。
+* **如何初始化Lua环境并调用Lua入口函数：** 参考 [Demo里的UI场景](Assets/Tools/LuaBehaviour/Demo/Scenes/UI.unity) 和 [Demo里的LuaMain脚本](Assets/Tools/LuaBehaviour/Demo/Scripts/LuaMain.cs)。
+* **如何在测试场景中随意使用LuaBehaviour(自动初始化Lua环境但不调用Lua入口函数)：** 直接使用即可，参考 [Demo里的3D场景](Assets/Tools/LuaBehaviour/Demo/Scenes/3D.unity)。
 * **如何使用EmmyLua进行Lua代码的提示：**
-  1. VSCode或者IDEA或者Rider里在插件市场搜索EmmyLua并安装
-  2. 根据自己自己的IDE，Unity编辑器里分别点击“Xlua/EmmyLua/DllToLuaLib”和“Xlua/EmmyLua/GenerateNameSpaceMap”下的对应菜单项，等待生成完成后引入项目。具体细节请看 [DllToLuaLib使用说明](Assets/Tools/LuaBehaviour/Demo/Editor/ForEmmyLua/使用说明.txt)。
-  3. 有什么疑问可以在QQ上搜EmmyLua群，去QQ群里问，插件相关的问题我也不太懂。
-* **XLua的LuaCallCSharp和CSharpCallLua是否需要修改：** 不需要修改，示例中有一份 [配置](Assets/LuaBehaviour/Demo/Editor/XLuaGenConfig.cs)，是在XLua的ExampleConfig.cs的基础上根据经验添加了一点东西，可以作为参考
+    1. VSCode或者IDEA或者Rider里在插件市场搜索EmmyLua并安装
+    2. 根据自己自己的IDE，Unity编辑器里分别点击“Xlua/EmmyLua/DllToLuaLib”和“Xlua/EmmyLua/GenerateNameSpaceMap”下的对应菜单项，等待生成完成后引入项目。具体细节请看 [DllToLuaLib使用说明](Assets/Tools/LuaBehaviour/Demo/Editor/ForEmmyLua/使用说明.txt)。
+    3. 有什么疑问可以在QQ上搜EmmyLua群，去QQ群里问，插件相关的问题我也不太懂。
+* **XLua的LuaCallCSharp和CSharpCallLua是否需要修改：** 不需要修改，示例中有一份 [配置](Assets/Tools/LuaBehaviour/Demo/Editor/XLuaGenConfig.cs)，是在XLua的ExampleConfig.cs的基础上根据经验添加了一点东西，可以作为参考。
 * **示例还提供了一些基础的封装：**
-  * **GlobalExtension:** pairs和ipairs支持遍历C#对象，log内容附上堆栈信息等。
-  * **BehaviourUtility:** 单例封装，用于外部监听Unity脚本生命周期函数的匿名LuaBehaviour类。
-  * **AsyncTask:** 方便执行异步任务的封装，有点像JavaScript的Promise。
-  * **EventManager:** 事件分发管理器。
-  * **CoroutineManager:** 协程管理器。
-  * **UIManager:** 简单手游的UI管理框架，对了，设计分辨率需要在 [UIManager.lua](Assets/Tools/LuaBehaviour/Demo/Resources/Lua/Manager/UIManager.lua)) 文件开头修改。
+    * **GlobalExtension:** pairs和ipairs支持遍历C#对象，log内容附上堆栈信息等。
+    * **BehaviourUtility:** 单例封装，用于外部监听Unity脚本生命周期函数的匿名LuaBehaviour类。
+    * **AsyncTask:** 方便执行异步任务的封装，有点像JavaScript的Promise。
+    * **EventManager:** 事件分发管理器。
+    * **CoroutineManager:** 协程管理器。
+    * **UIManager:** 简单手游的UI管理框架，对了，设计分辨率需要在 [UIManager.lua](Assets/Tools/LuaBehaviour/Demo/Resources/Lua/Manager/UIManager.lua)) 文件开头修改。
+* <mark>最近EmmyLua有更新，新增了对namespace的支持，还支持了partial关键字等，如果项目里用到这些特性，则 **DllToLuaLib功能** 和 **成员变量结构生成功能** 会受到影响，暂时请自行修改相关逻辑。</mark>
